@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
   _moveSettings:
-    <MoveSpeed>k__BackingField: 0
-    <RotateSpeed>k__BackingField: 0
+    <MoveSpeed>k__BackingField: 0.5
+    <RotateSpeed>k__BackingField: 200

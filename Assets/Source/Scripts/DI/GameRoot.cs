@@ -28,7 +28,6 @@ public class GameRoot : MonoInstaller
 
             case DeviceType.Desktop:
                 Container.BindInterfacesAndSelfTo<KeyboardInputMove>().AsSingle();
-                Debug.Log("keyboardBinded");
                 break;
 
             default:
