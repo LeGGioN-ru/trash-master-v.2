@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d07eb11c4dd06f479e7efa2ac902e99, type: 3}
-  m_Name: PlayerSettings
+  m_Script: {fileID: 11500000, guid: 8559c5f27c5302948a2a51827c59f265, type: 3}
+  m_Name: TrashSpawnerSettings
   m_EditorClassIdentifier: 
-  _moveSettings:
-    <MoveSpeed>k__BackingField: 0.5
-    <RotateSpeed>k__BackingField: 400
+  _settings:
+    <Size>k__BackingField: {x: 15, y: 1, z: 15}
+    <MaxHeaps>k__BackingField: 3
+    <SpawnDelay>k__BackingField: 2
+    <MinDistanceBetweenPlayer>k__BackingField: 1

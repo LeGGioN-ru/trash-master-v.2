@@ -1,7 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerModel : MonoBehaviour
+public class PlayerModel
 {
+    public Transform Transform { get; private set; }
+
+    public PlayerModel(Transform playerTransform)
+    {
+        Transform = playerTransform;
+    }
 }
