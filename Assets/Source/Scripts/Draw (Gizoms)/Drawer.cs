@@ -1,18 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
 public class Drawer : MonoBehaviour
 {
-    private IDrawable _drawable;
+    private List<IDrawable> _drawables = new List<IDrawable>();
 
     [Inject]
-    public void Construct(IDrawable drawable)
+    public void Construct(List<IDrawable> drawables)
     {
-        _drawable = drawable;
+        _drawables = drawables;
     }
 
     private void OnDrawGizmos()
     {
-        _drawable?.Draw();
+        _drawables.ForEach(drawable => drawable?.Draw());
     }
 }

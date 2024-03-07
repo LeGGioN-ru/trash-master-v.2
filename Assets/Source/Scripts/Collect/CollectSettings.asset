@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d07eb11c4dd06f479e7efa2ac902e99, type: 3}
-  m_Name: PlayerSettings
+  m_Script: {fileID: 11500000, guid: 35821a59a5913124dbe956d3c6de82de, type: 3}
+  m_Name: CollectSettings
   m_EditorClassIdentifier: 
-  _moveSettings:
-    <MoveSpeed>k__BackingField: 0.5
-    <RotateSpeed>k__BackingField: 400
-  _collectorSettings:
-    <Size>k__BackingField: {x: 7, y: 0, z: 7}
+  _settings:
+    <Speed>k__BackingField: 15

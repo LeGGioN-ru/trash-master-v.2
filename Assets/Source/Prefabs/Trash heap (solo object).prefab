@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 863279162885202757}
   - component: {fileID: 1980078303639272694}
   - component: {fileID: 6547764115037284062}
+  - component: {fileID: -3438672597268396585}
   m_Layer: 0
   m_Name: Trash heap (solo object)
   m_TagString: Untagged
@@ -47,7 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
-  _monoInstallers: []
+  _monoInstallers:
+  - {fileID: -3438672597268396585}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
@@ -61,6 +63,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1935ceefd4c7c444098057078f2b333e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3438672597268396585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3385591922638843625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795a8c0c6f010564b8e6a8797c55d106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7762250061868666998

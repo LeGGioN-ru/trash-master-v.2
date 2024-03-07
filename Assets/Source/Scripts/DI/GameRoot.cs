@@ -10,11 +10,12 @@ public class GameRoot : MonoInstaller
     [SerializeField] private Canvas _ui;
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private CoroutineManager _coroutineManager;
+    [SerializeField] private PlayerFacade _playerFacade;
 
     public override void InstallBindings()
     {
+        Container.BindInstance(_playerFacade);
         InjectInputMove();
-        Container.BindInstance(new PlayerModel(_playerTransform)).AsSingle();
         Container.BindInstance(_coroutineManager).AsSingle();
     }
 
