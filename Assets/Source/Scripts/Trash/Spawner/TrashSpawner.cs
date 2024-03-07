@@ -7,17 +7,17 @@ public class TrashSpawner : IInitializable
 {
     private readonly TrashSpawnerSettings.Settings _settings;
     private readonly Zone _zone;
-    private readonly PlayerModel _playerModel;
+    private readonly PlayerFacade _playerFacade;
     private readonly TrashHeap.Factory _heapFactory;
     private readonly CoroutineManager _coroutineManager;
 
     private bool _needSpawn = true;
     private List<TrashHeap> _trashHeaps = new List<TrashHeap>();
 
-    public TrashSpawner(Zone zone, TrashSpawnerSettings.Settings settings, PlayerModel playerModel, TrashHeap.Factory heapFactory,
+    public TrashSpawner(Zone zone, TrashSpawnerSettings.Settings settings, PlayerFacade playerFacade, TrashHeap.Factory heapFactory,
         CoroutineManager coroutineManager)
     {
-        _playerModel = playerModel;
+        _playerFacade = playerFacade;
         _zone = zone;
         _settings = settings;
         _heapFactory = heapFactory;
@@ -39,14 +39,14 @@ public class TrashSpawner : IInitializable
             if (_settings.MaxHeaps > _trashHeaps.Count)
             {
                 Vector3 spawnPosition = Vector3.zero;
-
                 do
                 {
                     spawnPosition = _zone.Center.position + new Vector3(Random.Range(-_zone.Size.x / 2f, _zone.Size.x / 2f),
                                                                               0,
                                                                               Random.Range(-_zone.Size.z / 2f, _zone.Size.z / 2f));
+                   
                     yield return null;
-                } while (Vector3.Distance(new Vector3(_playerModel.Transform.position.x, 0, _playerModel.Transform.position.z), spawnPosition) < _settings.MinDistanceBetweenPlayer);
+                } while (Vector3.Distance(new Vector3(_playerFacade.PlayerModel.Transform.position.x, 0, _playerFacade.PlayerModel.Transform.position.z), spawnPosition) < _settings.MinDistanceBetweenPlayer);
 
                 SpawnObject(spawnPosition);
             }
