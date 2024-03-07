@@ -16,7 +16,7 @@ public abstract class Zone : IDrawable
         Center = center;
     }
 
-    public bool GetObjectInZone<T>(out T component) where T : MonoBehaviour
+    public bool GetObjectInZone<T>(out T component)
     {
         Collider[] colliders = GetColliders();
 
@@ -29,11 +29,11 @@ public abstract class Zone : IDrawable
             }
         }
 
-        component = null;
+        component = default;
         return false;
     }
 
-    public bool GetObjectsInZone<T>(out T[] components) where T : MonoBehaviour
+    public bool GetObjectsInZone<T>(out T[] components)
     {
         Collider[] colliders = GetColliders();
 
