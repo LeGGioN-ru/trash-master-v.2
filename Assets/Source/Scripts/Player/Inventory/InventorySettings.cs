@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-
-public class InventorySettings : MonoBehaviour
+using Zenject;
+[CreateAssetMenu(fileName ="Inventory Settings",menuName ="Inventory/Settings",order =5)]
+public class InventorySettings : ScriptableObjectInstaller<InventorySettings>
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Settings _settings;
+
+    public override void InstallBindings()
     {
-        
+        Container.BindInstance(_settings);
     }
 
-    // Update is called once per frame
-    void Update()
+    [Serializable]
+    public class Settings
     {
-        
+        [field: SerializeField] public int MaxItems { get; private set; }
     }
 }
