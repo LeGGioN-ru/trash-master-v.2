@@ -2,22 +2,20 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class FlyToPointStrategy : IObjectMoveStrategy
+public class LinearSpeedMove : IObjectMoveStrategy
 {
     private readonly CoroutineManager _coroutineManager;
-    private readonly CollectSettings.Settings _collectSettings;
-    public float Speed => _collectSettings.Speed;
+    public float Speed => 50;
 
 
-    public FlyToPointStrategy(CoroutineManager coroutineManager, CollectSettings.Settings collectSettings)
+    public LinearSpeedMove(CoroutineManager coroutineManager)
     {
         _coroutineManager = coroutineManager;
-        _collectSettings = collectSettings;
     }
 
-    public void Move(Transform endPoint, Transform obj,  params Action[] onEnd)
+    public void Move(Transform endPoint, Transform obj, params Action[] onEnd)
     {
-        _coroutineManager.StartCoroutine(FlyToTarget(endPoint, obj,onEnd));
+        _coroutineManager.StartCoroutine(FlyToTarget(endPoint, obj, onEnd));
     }
 
     private IEnumerator FlyToTarget(Transform endPoint, Transform obj, Action[] onEnd)
