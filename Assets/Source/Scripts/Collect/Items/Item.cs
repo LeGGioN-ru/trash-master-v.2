@@ -22,11 +22,15 @@ public abstract class Item : IActivable
 
     public virtual void OnEndFly()
     {
-        _pickUpStrategy.PickUp();
+
     }
 
     public void Activate()
     {
-        _isActive = true;
+        if (_isActive == false)
+        {
+            _isActive = true;
+            _pickUpStrategy.PickUp(_itemFacade, OnEndFly);
+        }
     }
 }

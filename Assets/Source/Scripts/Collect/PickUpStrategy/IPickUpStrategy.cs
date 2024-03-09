@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public interface IPickUpStrategy
 {
-    public Transform PickPoint { get; }
-    public Quaternion EndRotation { get; }
-    public void PickUp();
+    public void PickUp(ItemFacade item,params Action[] onEndPickUp);
 }
