@@ -43,6 +43,7 @@ public abstract class TriggerZone<T> : IInitializable, ITickable
 
             if (component is IActivable activable && activable.IsActivable == false && activable.CanBeActivated)
             {
+                Debug.Log(component);
                 OnActivate(component);
             }
         }

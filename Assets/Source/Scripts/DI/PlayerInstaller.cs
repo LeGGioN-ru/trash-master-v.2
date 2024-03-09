@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using Zenject;
 
 public class PlayerInstaller : MonoInstaller
@@ -14,10 +15,11 @@ public class PlayerInstaller : MonoInstaller
     public override void InstallBindings()
     {
         PlayerModel playerModel = new PlayerModel(_character, _centerCharacter);
+        Container.BindInterfacesAndSelfTo<LinearSpeedRotation>().AsSingle();
         Container.BindInstance(playerModel.Transform);
         Container.BindInstance(playerModel);
 
-        Container.Bind<IObjectMoveStrategy>().To<FlyToPointStrategy>().AsSingle();
+        Container.Bind<IObjectMoveStrategy>().To<LinearSpeedMove>().AsSingle();
         Container.BindInstance(_playerController).AsSingle();
         Container.BindInterfacesAndSelfTo<CharacterControllerMover>().AsSingle();
         Container.BindInterfacesAndSelfTo<MoveUser>().AsSingle();

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using Zenject;
 
 public class GameRoot : MonoInstaller
@@ -14,10 +15,12 @@ public class GameRoot : MonoInstaller
 
     public override void InstallBindings()
     {
+        SignalBusInstaller.Install(Container);
         Container.BindInstance(_playerFacade);
         InjectInputMove();
         Container.BindInstance(_coroutineManager).AsSingle();
     }
+
 
     private void InjectInputMove()
     {
