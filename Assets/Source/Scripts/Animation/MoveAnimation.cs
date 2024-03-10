@@ -6,6 +6,8 @@ public class MoveAnimation : IAnimation, ITickable
     private readonly Animator _animator;
     private readonly IInputMove _inputMove;
 
+    public bool IsMoving => _inputMove.GetDirectionMove() != Vector2.zero;
+
     public MoveAnimation(Animator animator, IInputMove inputMove)
     {
         _animator = animator;
@@ -24,7 +26,7 @@ public class MoveAnimation : IAnimation, ITickable
 
     public void Tick()
     {
-        if (_inputMove.GetDirectionMove() != Vector2.zero)
+        if (IsMoving)
             EnableAnimation();
         else
             DisableAnimation();

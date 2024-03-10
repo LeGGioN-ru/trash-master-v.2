@@ -4,13 +4,11 @@ using Zenject;
 
 public abstract class Item : IActivable
 {
-    private int _delay = 5;
     private bool _isActive = false;
     private readonly IPickUpStrategy _pickUpStrategy;
     private readonly ItemFacade _itemFacade;
 
     public bool IsActivable => _isActive;
-    public int Delay => _delay;
     public bool CanBeActivated => true;
     public Transform Transform => _itemFacade.transform;
 

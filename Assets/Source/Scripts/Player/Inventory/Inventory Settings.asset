@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Inventory Settings
   m_EditorClassIdentifier: 
   _settings:
-    <MaxItems>k__BackingField: 5
+    <MaxItems>k__BackingField: 7

@@ -1,11 +1,11 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public abstract class TriggerZone<T> : IInitializable, ITickable
+public abstract class TriggerZone<T> : IInitializable, IFixedTickable
 {
     protected Zone Zone;
-    private float _delay;
     private bool _isActive = true;
 
     public TriggerZone(Zone zone)
@@ -15,36 +15,17 @@ public abstract class TriggerZone<T> : IInitializable, ITickable
 
     public abstract void Initialize();
 
-    public void AddDelay(float delay)
-    {
-        if (delay < 0)
-            throw new ArgumentException("Задержка не может быть отрицательной!");
-
-        _delay += delay;
-    }
-
-    public void Tick()
+    public void FixedTick()
     {
         if (_isActive == false)
             return;
 
-        if (_delay > 0)
+        if (GetObjectsInZone(out List<T> components))
         {
-            _delay -= Time.deltaTime;
-            return;
-        }
-
-        if (GetObjectInZone(out T component))
-        {
-            if (component is ITouchable touchable && touchable.CanBeTouched)
+            foreach (var component in components)
             {
-                touchable.Touch();
-            }
-
-            if (component is IActivable activable && activable.IsActivable == false && activable.CanBeActivated)
-            {
-                Debug.Log(component);
-                OnActivate(component);
+                if (component is IActivable activable && activable.CanBeActivated && activable.IsActivable == false)
+                    OnActivate(component);
             }
         }
     }
@@ -61,5 +42,5 @@ public abstract class TriggerZone<T> : IInitializable, ITickable
         _isActive = false;
     }
 
-    protected abstract bool GetObjectInZone(out T component);
+    protected abstract bool GetObjectsInZone(out List<T> components);
 }

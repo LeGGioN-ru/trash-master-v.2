@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -18,20 +19,15 @@ public class CollectZone : TriggerZone<Item>
         Zone.SetSize(_collectorSettings.Size);
     }
 
-    protected override bool GetObjectInZone(out Item component)
+    protected override bool GetObjectsInZone(out List<Item> components)
     {
-        if (Zone.GetObjectsInZone(out ItemFacade[] itemsFacades))
+        if (Zone.GetObjectsInZone(out ItemFacade[] facades))
         {
-            ItemFacade itemFacade = itemsFacades.FirstOrDefault(x => x.Item is IActivable activable && activable.IsActivable == false);
-
-            if (itemFacade != null)
-            {
-                component = itemFacade.Item;
-                return true;
-            }
+            components = facades.Select(facade => facade.Item).ToList();
+            return true;
         }
 
-        component = null;
+        components = null;
         return false;
     }
 

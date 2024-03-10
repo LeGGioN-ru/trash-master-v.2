@@ -143,5 +143,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemFacade: {fileID: 6965894549143054366}
-  _pickUpType: 0
+  _pickUpType: 1
   _endRotateType: 0
